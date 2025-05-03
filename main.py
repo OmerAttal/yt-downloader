@@ -13,46 +13,49 @@ class Yt_app(QDialog):
         button.setFixedSize(200,25)
         button.clicked.connect(self.button_click)
         
-        text = QLineEdit()
-        text.setFixedSize(350 , 25)
+        self.text = QLineEdit()
+        self.text.setFixedSize(350 , 25)
 
-        boxP = QComboBox()
-        boxP.addItem("1080p")
-        boxP.addItem("720p")
-        boxP.addItem("480p")
-        boxP.addItem("360p")
-        boxP.addItem("240p")
-        boxP.addItem("144p")
-        boxP.setFixedSize(100,20)
+        self.boxP = QComboBox()
+        self.boxP.addItem("1080p")
+        self.boxP.addItem("720p")
+        self.boxP.addItem("480p")
+        self.boxP.addItem("360p")
+        self.boxP.addItem("240p")
+        self.boxP.addItem("144p")
+        self.boxP.setFixedSize(100,20)
 
-        boxM = QComboBox()
-        boxM.addItem("mp3")
-        boxM.addItem("mp4")
-        boxM.setFixedSize(100,20)
+        self.boxM = QComboBox()
+        self.boxM.addItem("mp3")
+        self.boxM.addItem("mp4")
+        self.boxM.setFixedSize(100,20)
 
         label = QLabel("yt-downloader")
 
         layout_h = QHBoxLayout()
-        layout_h.addWidget(boxP)
-        layout_h.addWidget(boxM)
+        layout_h.addWidget(self.boxP)
+        layout_h.addWidget(self.boxM)
 
         layout = QVBoxLayout()
         layout.addWidget(label)
-        layout.addWidget(text)
+        layout.addWidget(self.text)
         layout.addLayout(layout_h)
         layout.addWidget(button)
 
         layout.setAlignment(label , Qt.AlignCenter)
         layout.setAlignment(button , Qt.AlignCenter)
-        layout.setAlignment(text , Qt.AlignCenter)
-        layout_h.setAlignment(boxM , Qt.AlignLeft)
-        layout_h.setAlignment(boxP , Qt.AlignRight)
+        layout.setAlignment(self.text , Qt.AlignCenter)
+        layout_h.setAlignment(self.boxM , Qt.AlignLeft)
+        layout_h.setAlignment(self.boxP , Qt.AlignRight)
         
         self.setLayout(layout)
 
     def button_click(self):
         print("clicked")
-        
+        link = self.text.text()
+        format = self.boxM.currentText()
+        quality = self.boxP.currentText()
+        print(link,format,quality)
 
 if __name__ == '__main__':
     app = QApplication()
