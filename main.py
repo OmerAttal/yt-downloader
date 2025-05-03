@@ -1,6 +1,7 @@
 import sys
 from PySide6.QtWidgets import QApplication, QLabel, QPushButton , QLineEdit , QDialog , QVBoxLayout , QWidget , QListWidget , QListWidgetItem , QHBoxLayout , QComboBox
 from PySide6.QtCore import Slot,Signal,QObject , Qt 
+from pytube import YouTube
 
 class Yt_app(QDialog):
     def __init__(self , parent = None):
@@ -14,7 +15,12 @@ class Yt_app(QDialog):
         button.clicked.connect(self.button_click)
         
         self.text = QLineEdit()
+        self.text.setPlaceholderText("Video Link")
         self.text.setFixedSize(350 , 25)
+
+        self.file = QLineEdit()
+        self.file.setPlaceholderText("File Name")
+        self.file.setFixedSize(350 , 25)
 
         self.boxP = QComboBox()
         self.boxP.addItem("1080p")
@@ -39,6 +45,7 @@ class Yt_app(QDialog):
         layout = QVBoxLayout()
         layout.addWidget(label)
         layout.addWidget(self.text)
+        layout.addWidget(self.file)
         layout.addLayout(layout_h)
         layout.addWidget(button)
 
@@ -47,15 +54,16 @@ class Yt_app(QDialog):
         layout.setAlignment(self.text , Qt.AlignCenter)
         layout_h.setAlignment(self.boxM , Qt.AlignLeft)
         layout_h.setAlignment(self.boxP , Qt.AlignRight)
-        
+        layout.setAlignment(self.file , Qt.AlignCenter)
+
         self.setLayout(layout)
 
     def button_click(self):
-        print("clicked")
         link = self.text.text()
         format = self.boxM.currentText()
         quality = self.boxP.currentText()
-        print(link,format,quality)
+
+        
 
 if __name__ == '__main__':
     app = QApplication()

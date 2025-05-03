@@ -23,8 +23,8 @@ QLineEdit {
 }
 
 QLineEdit:focus{
-    background-color: #e0f7fa; /* Mavi-yeşil bir renk */
-    border: 2px solid #00bcd4;  /* Sınır rengini değiştir */
+    background-color: #e0f7fa;
+    border: 2px solid #00bcd4;
 }
 
 QComboBox{
