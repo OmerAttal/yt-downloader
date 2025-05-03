@@ -1,6 +1,7 @@
 import sys
 from PySide6.QtWidgets import QApplication, QLabel, QPushButton , QLineEdit , QDialog , QVBoxLayout , QWidget , QListWidget , QListWidgetItem , QHBoxLayout , QComboBox
 from PySide6.QtCore import Slot,Signal,QObject , Qt 
+
 from pytube import YouTube
 
 class Yt_app(QDialog):
@@ -10,9 +11,9 @@ class Yt_app(QDialog):
         self.setWindowTitle("YT downloader")
         self.setGeometry(500 , 250 , 500 , 300)
 
-        button = QPushButton("Install")
-        button.setFixedSize(200,25)
-        button.clicked.connect(self.button_click)
+        self.button = QPushButton("Install")
+        self.button.setFixedSize(200,25)
+        self.button.clicked.connect(self.button_click)
         
         self.text = QLineEdit()
         self.text.setPlaceholderText("Video Link")
@@ -38,31 +39,39 @@ class Yt_app(QDialog):
 
         label = QLabel("yt-downloader")
 
-        layout_h = QHBoxLayout()
-        layout_h.addWidget(self.boxP)
-        layout_h.addWidget(self.boxM)
+        self.layout_h = QHBoxLayout()
+        self.layout_h.addWidget(self.boxP)
+        self.layout_h.addWidget(self.boxM)
 
-        layout = QVBoxLayout()
-        layout.addWidget(label)
-        layout.addWidget(self.text)
-        layout.addWidget(self.file)
-        layout.addLayout(layout_h)
-        layout.addWidget(button)
+        self.layout = QVBoxLayout()
+        self.layout.addWidget(label)
+        self.layout.addWidget(self.text)
+        self.layout.addWidget(self.file)
+        self.layout.addLayout(self.layout_h)
+        self.layout.addWidget(self.button)
 
-        layout.setAlignment(label , Qt.AlignCenter)
-        layout.setAlignment(button , Qt.AlignCenter)
-        layout.setAlignment(self.text , Qt.AlignBottom | Qt.AlignCenter)
-        layout_h.setAlignment(self.boxM , Qt.AlignLeft)
-        layout_h.setAlignment(self.boxP , Qt.AlignRight)
-        layout.setAlignment(self.file , Qt.AlignCenter)
+        self.layout.setAlignment(label , Qt.AlignCenter)
+        self.layout.setAlignment(self.button , Qt.AlignCenter)
+        self.layout.setAlignment(self.text , Qt.AlignBottom | Qt.AlignCenter)
+        self.layout_h.setAlignment(self.boxM , Qt.AlignLeft)
+        self.boxM.currentIndexChanged.connect(self.on_format_selected)
+        self.layout_h.setAlignment(self.boxP , Qt.AlignRight)
+        self.layout.setAlignment(self.file , Qt.AlignCenter)
 
-        self.setLayout(layout)
+
+        self.setLayout(self.layout)
 
     def button_click(self):
         link = self.text.text()
-        format = self.boxM.currentText()
         quality = self.boxP.currentText()
         file = self.file.text()
+
+    def on_format_selected(self):
+        format = self.boxM.currentText()
+        if format == "mp4":
+            self.boxP.show()
+        else:
+            self.boxP.hide()
 
 
 if __name__ == '__main__':
