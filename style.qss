@@ -3,7 +3,6 @@
 }
 
 QPushButton {
-   
     padding: 5px ;
     border-radius: 10px;
     background-color:rgb(234, 179, 179);
@@ -23,4 +22,9 @@ QLineEdit {
 QLineEdit:focus{
     background-color: #e0f7fa; /* Mavi-yeşil bir renk */
     border: 2px solid #00bcd4;  /* Sınır rengini değiştir */
+}
+
+QComboBox{
+    background-color:rgb(208, 237, 216) ;
+    color: black;
 }
