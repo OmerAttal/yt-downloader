@@ -10,12 +10,16 @@ class Yt_app(QDialog):
         self.setGeometry(600 , 600 , 500 , 300)
 
         button = QPushButton("click")
+        button.setFixedSize(200,25)
         button.clicked.connect(self.button_click)
         text = QLineEdit()
 
         layout = QVBoxLayout()
         layout.addWidget(text)
         layout.addWidget(button)
+
+        layout.setAlignment(button , Qt.AlignCenter)
+        layout.setAlignment(text , Qt.AlignCenter)
 
         self.setLayout(layout)
 
