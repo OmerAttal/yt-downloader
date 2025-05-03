@@ -8,9 +8,11 @@ class Yt_app(QDialog):
 
         button = QPushButton("click")
         button.clicked.connect(self.button_click)
+        text = QLineEdit()
 
         layout = QVBoxLayout()
         layout.addWidget(button)
+        layout.addWidget(text)
 
         self.setLayout(layout)
 
