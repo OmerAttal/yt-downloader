@@ -51,7 +51,7 @@ class Yt_app(QDialog):
 
         layout.setAlignment(label , Qt.AlignCenter)
         layout.setAlignment(button , Qt.AlignCenter)
-        layout.setAlignment(self.text , Qt.AlignCenter)
+        layout.setAlignment(self.text , Qt.AlignBottom | Qt.AlignCenter)
         layout_h.setAlignment(self.boxM , Qt.AlignLeft)
         layout_h.setAlignment(self.boxP , Qt.AlignRight)
         layout.setAlignment(self.file , Qt.AlignCenter)
@@ -63,7 +63,6 @@ class Yt_app(QDialog):
         format = self.boxM.currentText()
         quality = self.boxP.currentText()
 
-        
 
 if __name__ == '__main__':
     app = QApplication()
