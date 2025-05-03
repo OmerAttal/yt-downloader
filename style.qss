@@ -7,6 +7,7 @@ QPushButton {
     border-radius: 10px;
     background-color:rgb(234, 179, 179);
     color: black;
+    width: 10px;
 }
 
 QPushButton:focus{
@@ -17,6 +18,8 @@ QLineEdit {
     padding: 5px ;
     border-radius: 10px;
     background-color: #e0f7fa ;
+    color: black;
+    width: 10px;
 }
 
 QLineEdit:focus{
@@ -27,4 +30,5 @@ QLineEdit:focus{
 QComboBox{
     background-color:rgb(208, 237, 216) ;
     color: black;
+    width: 10px;
 }

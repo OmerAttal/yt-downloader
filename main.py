@@ -9,7 +9,7 @@ class Yt_app(QDialog):
         self.setWindowTitle("YT downloader")
         self.setGeometry(600 , 600 , 500 , 300)
 
-        button = QPushButton("click")
+        button = QPushButton("Install")
         button.setFixedSize(200,25)
         button.clicked.connect(self.button_click)
         
