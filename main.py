@@ -1,8 +1,12 @@
 import sys
 from PySide6.QtWidgets import QApplication, QLabel, QPushButton , QLineEdit , QDialog , QVBoxLayout , QWidget , QListWidget , QListWidgetItem , QHBoxLayout , QComboBox
 from PySide6.QtCore import Qt 
-
+import yt_dlp
+import os
 from pytube import YouTube
+
+os.environ["PATH"] += os.pathsep + r"C:\ffmpeg\bin"
+
 
 class Yt_app(QDialog):
     def __init__(self , parent = None):
@@ -88,9 +92,37 @@ class Yt_app(QDialog):
         else:
             self.boxP.hide()
 
-    def Download(self , link , file , format):
-        print("indirme")
 
+    def Download(self, link, file, format_choice):
+        selected_res = self.boxP.currentText()  
+        selected_height = int(selected_res.replace("p", ""))  
+        
+        if format_choice == 'mp3':  
+            ydl_opts = {
+                'format': 'bestaudio/best',
+                'postprocessors': [{
+                    'key': 'FFmpegExtractAudio',
+                    'preferredcodec': 'mp3',   
+                    'preferredquality': '192',
+                }],
+                'outtmpl': f"{file}.%(ext)s",  
+            }
+        elif format_choice == 'mp4':  
+            ydl_opts = {
+                'format': f"bestvideo[ext=mp4][height<={selected_height}]+bestaudio[ext=m4a]/best[ext=mp4]/best",
+                'outtmpl': f"{file}.%(ext)s",  
+                'merge_output_format': 'mp4',
+            }
+        else:
+            print("Uygun bir format seçilmedi.")
+            return
+
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            try:
+                ydl.download([link])  
+                print("İndirme tamamlandı.")
+            except Exception as e:
+                print(f"Bir hata oluştu: {e}")  
 
 if __name__ == '__main__':
     app = QApplication()
