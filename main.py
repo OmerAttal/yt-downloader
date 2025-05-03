@@ -61,7 +61,7 @@ class Yt_app(QDialog):
         self.boxM.currentIndexChanged.connect(self.on_format_selected)
         self.layout_h.setAlignment(self.boxP , Qt.AlignRight)
         self.layout.setAlignment(self.file , Qt.AlignCenter)
-        self.layout.setAlignment(self.loading_label , Qt.AlignCenter)
+        self.layout.setAlignment(self.loading_label , Qt.AlignTop | Qt.AlignCenter)
 
         self.setLayout(self.layout)
 
