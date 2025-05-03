@@ -67,9 +67,17 @@ class Yt_app(QDialog):
 
     def button_click(self):
         link = self.text.text()
-        quality = self.boxP.currentText()
+        format = self.boxM.currentText()
         file = self.file.text()
 
+        if link and quality and file:
+            self.text.hide()
+            self.file.hide()
+            self.boxP.hide()
+            self.boxM.hide()
+            self.button.hide()
+            self.loading_label.show()
+            self.DownloadAudio(link,file,format)
 
     def on_format_selected(self):
         format = self.boxM.currentText()
@@ -77,6 +85,10 @@ class Yt_app(QDialog):
             self.boxP.show()
         else:
             self.boxP.hide()
+
+    def Download(self , link , file , format):
+        print("indirme")
+        
 
 if __name__ == '__main__':
     app = QApplication()
