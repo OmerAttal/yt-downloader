@@ -30,15 +30,19 @@ class Yt_app(QDialog):
         boxM.addItem("mp4")
         boxM.setFixedSize(100,20)
 
+        label = QLabel("yt-downloader")
+
         layout_h = QHBoxLayout()
         layout_h.addWidget(boxP)
         layout_h.addWidget(boxM)
 
         layout = QVBoxLayout()
+        layout.addWidget(label)
         layout.addWidget(text)
         layout.addLayout(layout_h)
         layout.addWidget(button)
 
+        layout.setAlignment(label , Qt.AlignCenter)
         layout.setAlignment(button , Qt.AlignCenter)
         layout.setAlignment(text , Qt.AlignCenter)
         layout_h.setAlignment(boxM , Qt.AlignLeft)
