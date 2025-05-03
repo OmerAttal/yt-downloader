@@ -11,8 +11,8 @@ class Yt_app(QDialog):
         text = QLineEdit()
 
         layout = QVBoxLayout()
-        layout.addWidget(button)
         layout.addWidget(text)
+        layout.addWidget(button)
 
         self.setLayout(layout)
 
