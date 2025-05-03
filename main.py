@@ -39,6 +39,8 @@ class Yt_app(QDialog):
 
         label = QLabel("yt-downloader")
 
+        self.loading_label = QLabel()
+
         self.layout_h = QHBoxLayout()
         self.layout_h.addWidget(self.boxP)
         self.layout_h.addWidget(self.boxM)
@@ -49,6 +51,8 @@ class Yt_app(QDialog):
         self.layout.addWidget(self.file)
         self.layout.addLayout(self.layout_h)
         self.layout.addWidget(self.button)
+        self.layout.addWidget(self.loading_label)
+        self.loading_label.hide()
 
         self.layout.setAlignment(label , Qt.AlignCenter)
         self.layout.setAlignment(self.button , Qt.AlignCenter)
@@ -57,7 +61,7 @@ class Yt_app(QDialog):
         self.boxM.currentIndexChanged.connect(self.on_format_selected)
         self.layout_h.setAlignment(self.boxP , Qt.AlignRight)
         self.layout.setAlignment(self.file , Qt.AlignCenter)
-
+        self.layout.setAlignment(self.loading_label , Qt.AlignCenter)
 
         self.setLayout(self.layout)
 
@@ -66,13 +70,13 @@ class Yt_app(QDialog):
         quality = self.boxP.currentText()
         file = self.file.text()
 
+
     def on_format_selected(self):
         format = self.boxM.currentText()
         if format == "mp4":
             self.boxP.show()
         else:
             self.boxP.hide()
-
 
 if __name__ == '__main__':
     app = QApplication()
