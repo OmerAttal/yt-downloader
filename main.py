@@ -3,7 +3,16 @@ from PySide6.QtWidgets import QApplication, QLabel, QPushButton , QLineEdit , QD
 from PySide6.QtCore import Slot,Signal,QObject , Qt 
 
 class Yt_app(QDialog):
-    print("")
+    def __init__(self , parent = None):
+        super().__init__(parent)
+
+        button = QPushButton("click")
+
+        layout = QVBoxLayout()
+        layout.addWidget(button)
+
+        self.setLayout(layout)
+
 
 if __name__ == '__main__':
     app = QApplication()
