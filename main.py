@@ -7,7 +7,7 @@ class Yt_app(QDialog):
         super().__init__(parent)
 
         self.setWindowTitle("YT downloader")
-        self.setGeometry(600 , 600 , 500 , 300)
+        self.setGeometry(500 , 250 , 500 , 300)
 
         button = QPushButton("Install")
         button.setFixedSize(200,25)
