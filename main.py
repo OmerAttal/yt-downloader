@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtWidgets import QApplication, QLabel, QPushButton , QLineEdit , QDialog , QVBoxLayout , QWidget , QListWidget , QListWidgetItem , QHBoxLayout , QComboBox
-from PySide6.QtCore import Slot,Signal,QObject , Qt 
+from PySide6.QtCore import Qt 
 
 from pytube import YouTube
 
@@ -78,6 +78,8 @@ class Yt_app(QDialog):
             self.button.hide()
             self.loading_label.show()
             self.Download(link,file,format)
+        else:
+            print("some bug")
 
     def on_format_selected(self):
         format = self.boxM.currentText()
