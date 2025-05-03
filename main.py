@@ -6,6 +6,9 @@ class Yt_app(QDialog):
     def __init__(self , parent = None):
         super().__init__(parent)
 
+        self.setWindowTitle("YT downloader")
+        self.setGeometry(600 , 600 , 500 , 300)
+
         button = QPushButton("click")
         button.clicked.connect(self.button_click)
         text = QLineEdit()
