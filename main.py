@@ -16,23 +16,34 @@ class Yt_app(QDialog):
         text = QLineEdit()
         text.setFixedSize(350 , 25)
 
-        box = QComboBox()
-        box.addItem("1080p")
-        box.addItem("720p")
-        box.addItem("480p")
-        box.addItem("360p")
-        box.addItem("240p")
-        box.addItem("144p")
+        boxP = QComboBox()
+        boxP.addItem("1080p")
+        boxP.addItem("720p")
+        boxP.addItem("480p")
+        boxP.addItem("360p")
+        boxP.addItem("240p")
+        boxP.addItem("144p")
+        boxP.setFixedSize(100,20)
+
+        boxM = QComboBox()
+        boxM.addItem("mp3")
+        boxM.addItem("mp4")
+        boxM.setFixedSize(100,20)
+
+        layout_h = QHBoxLayout()
+        layout_h.addWidget(boxP)
+        layout_h.addWidget(boxM)
 
         layout = QVBoxLayout()
         layout.addWidget(text)
-        layout.addWidget(box)
+        layout.addLayout(layout_h)
         layout.addWidget(button)
 
         layout.setAlignment(button , Qt.AlignCenter)
         layout.setAlignment(text , Qt.AlignCenter)
-        layout.setAlignment(box , Qt.AlignCenter)
-
+        layout_h.setAlignment(boxM , Qt.AlignLeft)
+        layout_h.setAlignment(boxP , Qt.AlignRight)
+        
         self.setLayout(layout)
 
     def button_click(self):
