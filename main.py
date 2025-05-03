@@ -7,12 +7,16 @@ class Yt_app(QDialog):
         super().__init__(parent)
 
         button = QPushButton("click")
+        button.clicked.connect(self.button_click)
 
         layout = QVBoxLayout()
         layout.addWidget(button)
 
         self.setLayout(layout)
 
+    def button_click(self):
+        print("clicked")
+        
 
 if __name__ == '__main__':
     app = QApplication()
