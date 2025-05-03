@@ -62,6 +62,7 @@ class Yt_app(QDialog):
         link = self.text.text()
         format = self.boxM.currentText()
         quality = self.boxP.currentText()
+        file = self.file.text()
 
 
 if __name__ == '__main__':
