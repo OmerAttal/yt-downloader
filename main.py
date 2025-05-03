@@ -12,7 +12,9 @@ class Yt_app(QDialog):
         button = QPushButton("click")
         button.setFixedSize(200,25)
         button.clicked.connect(self.button_click)
+        
         text = QLineEdit()
+        text.setFixedSize(350 , 25)
 
         layout = QVBoxLayout()
         layout.addWidget(text)
