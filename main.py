@@ -31,6 +31,7 @@ class Yt_app(QDialog):
 
         layout.setAlignment(button , Qt.AlignCenter)
         layout.setAlignment(text , Qt.AlignCenter)
+        layout.setAlignment(box , Qt.AlignCenter)
 
         self.setLayout(layout)
 
