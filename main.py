@@ -39,7 +39,7 @@ class Yt_app(QDialog):
 
         label = QLabel("yt-downloader")
 
-        self.loading_label = QLabel()
+        self.loading_label = QLabel("Downloading...")
 
         self.layout_h = QHBoxLayout()
         self.layout_h.addWidget(self.boxP)
@@ -70,14 +70,14 @@ class Yt_app(QDialog):
         format = self.boxM.currentText()
         file = self.file.text()
 
-        if link and quality and file:
+        if link and format and file:
             self.text.hide()
             self.file.hide()
             self.boxP.hide()
             self.boxM.hide()
             self.button.hide()
             self.loading_label.show()
-            self.DownloadAudio(link,file,format)
+            self.Download(link,file,format)
 
     def on_format_selected(self):
         format = self.boxM.currentText()
@@ -88,7 +88,7 @@ class Yt_app(QDialog):
 
     def Download(self , link , file , format):
         print("indirme")
-        
+
 
 if __name__ == '__main__':
     app = QApplication()
