@@ -1,5 +1,5 @@
 import sys
-from PySide6.QtWidgets import QApplication, QLabel, QPushButton , QLineEdit , QDialog , QVBoxLayout , QWidget , QListWidget , QListWidgetItem , QHBoxLayout
+from PySide6.QtWidgets import QApplication, QLabel, QPushButton , QLineEdit , QDialog , QVBoxLayout , QWidget , QListWidget , QListWidgetItem , QHBoxLayout , QComboBox
 from PySide6.QtCore import Slot,Signal,QObject , Qt 
 
 class Yt_app(QDialog):
@@ -16,8 +16,17 @@ class Yt_app(QDialog):
         text = QLineEdit()
         text.setFixedSize(350 , 25)
 
+        box = QComboBox()
+        box.addItem("1080p")
+        box.addItem("720p")
+        box.addItem("480p")
+        box.addItem("360p")
+        box.addItem("240p")
+        box.addItem("144p")
+
         layout = QVBoxLayout()
         layout.addWidget(text)
+        layout.addWidget(box)
         layout.addWidget(button)
 
         layout.setAlignment(button , Qt.AlignCenter)
