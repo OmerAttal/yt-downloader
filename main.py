@@ -20,6 +20,7 @@ class Yt_app(QDialog):
 
         self.buttonAgain = QPushButton("Install Onether Video")
         self.buttonAgain.setFixedSize(200,25)
+        self.buttonAgain.clicked.connect(self.returntomenu)
         
         self.text = QLineEdit()
         self.text.setPlaceholderText("Video Link")
@@ -131,7 +132,14 @@ class Yt_app(QDialog):
             except Exception as e:
                 print(f"Bir hata oluştu: {e}")  
 
-    
+    def returntomenu(self):
+        self.text.show()
+        self.file.show()
+        self.boxP.show()
+        self.boxM.show()
+        self.button.show()
+        self.loading_label.hide()
+        self.buttonAgain.hide()
 
 if __name__ == '__main__':
     app = QApplication()
