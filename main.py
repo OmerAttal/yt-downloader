@@ -40,8 +40,8 @@ class Yt_app(QDialog):
         self.boxP.setFixedSize(100,20)
 
         self.boxM = QComboBox()
-        self.boxM.addItem("mp3")
         self.boxM.addItem("mp4")
+        self.boxM.addItem("mp3")
         self.boxM.setFixedSize(100,20)
 
         label = QLabel("yt-downloader")
