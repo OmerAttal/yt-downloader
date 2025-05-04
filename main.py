@@ -3,7 +3,6 @@ from PySide6.QtWidgets import QApplication, QLabel, QPushButton , QLineEdit , QD
 from PySide6.QtCore import Qt 
 import yt_dlp
 import os
-from pytube import YouTube
 
 os.environ["PATH"] += os.pathsep + r"C:\ffmpeg\bin"
 
@@ -18,7 +17,7 @@ class Yt_app(QDialog):
         self.button.setFixedSize(200,25)
         self.button.clicked.connect(self.button_click)
 
-        self.buttonAgain = QPushButton("Install Onether Video")
+        self.buttonAgain = QPushButton("Install Another Video")
         self.buttonAgain.setFixedSize(200,25)
         self.buttonAgain.clicked.connect(self.returntomenu)
         
