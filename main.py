@@ -7,7 +7,6 @@ from pytube import YouTube
 
 os.environ["PATH"] += os.pathsep + r"C:\ffmpeg\bin"
 
-
 class Yt_app(QDialog):
     def __init__(self , parent = None):
         super().__init__(parent)
@@ -18,6 +17,9 @@ class Yt_app(QDialog):
         self.button = QPushButton("Install")
         self.button.setFixedSize(200,25)
         self.button.clicked.connect(self.button_click)
+
+        self.buttonAgain = QPushButton("Install Onether Video")
+        self.buttonAgain.setFixedSize(200,25)
         
         self.text = QLineEdit()
         self.text.setPlaceholderText("Video Link")
@@ -43,7 +45,7 @@ class Yt_app(QDialog):
 
         label = QLabel("yt-downloader")
 
-        self.loading_label = QLabel("Downloading...")
+        self.loading_label = QLabel("Download Completed")
 
         self.layout_h = QHBoxLayout()
         self.layout_h.addWidget(self.boxP)
@@ -56,7 +58,10 @@ class Yt_app(QDialog):
         self.layout.addLayout(self.layout_h)
         self.layout.addWidget(self.button)
         self.layout.addWidget(self.loading_label)
+        self.layout.addWidget(self.buttonAgain)
         self.loading_label.hide()
+        self.buttonAgain.hide()
+
 
         self.layout.setAlignment(label , Qt.AlignCenter)
         self.layout.setAlignment(self.button , Qt.AlignCenter)
@@ -66,6 +71,7 @@ class Yt_app(QDialog):
         self.layout_h.setAlignment(self.boxP , Qt.AlignRight)
         self.layout.setAlignment(self.file , Qt.AlignCenter)
         self.layout.setAlignment(self.loading_label , Qt.AlignTop | Qt.AlignCenter)
+        self.layout.setAlignment(self.buttonAgain , Qt.AlignCenter)
 
         self.setLayout(self.layout)
 
@@ -81,6 +87,7 @@ class Yt_app(QDialog):
             self.boxM.hide()
             self.button.hide()
             self.loading_label.show()
+            self.buttonAgain.show()
             self.Download(link,file,format)
         else:
             print("some bug")
@@ -123,6 +130,8 @@ class Yt_app(QDialog):
                 print("İndirme tamamlandı.")
             except Exception as e:
                 print(f"Bir hata oluştu: {e}")  
+
+    
 
 if __name__ == '__main__':
     app = QApplication()
